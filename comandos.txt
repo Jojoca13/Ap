@@ -1,0 +1,30 @@
+npm init -Y //configura json
+
+Instalar coisinhas:
+npm i typescript
+npm i ts-node-dev
+npm i -D @types/node
+npm i --save-dev tsconfig-paths
+
+Inicializar Typescript:
+tsc --init
+
+npm run dev
+
+ Adiciona na pasta tsconfig.json:
+ "baseUrl": "./",
+    "paths":{
+      "@config/*" : ["src/config/*"],
+      "@modules/*": ["src/modules/*"],
+      "@shared/*": ["src/shared/*"]
+    },
+    "ignoreDeprecations": "6.0",
+
+npx ts-node-dev -r tsconfig-paths/register src/shared/http/server.ts
+
+Instalar express para parte web:
+npm i express@4
+npm i express-async-errors
+npm i cors
+npm i -D @types/express
+npm i @types/cors
