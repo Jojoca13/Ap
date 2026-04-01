@@ -1,7 +1,9 @@
+import 'reflect-metadata';
 import express, {NextFunction, Request, Response} from 'express';
 import cors from 'cors';
 import routes from './routes';
 import AppError from '@shared/errors/AppError';
+import { AppDataSource } from '@shared/typeorm/data-source';
 
 const app = express();
 
@@ -22,6 +24,17 @@ app.use((error: Error, request: Request, response: Response, next: NextFunction)
     });
 });
 
-app.listen(3333, ()=>{
-    console.log('Server Started on port 3333!');
+
+
+AppDataSource.initialize()
+.then(() =>{
+    console.log("DataSource initialized!");
+    app.listen(3333, () => {
+        console.log('Server Started on port 3333!');
+    });
+}).catch((err) => {
+        console.error('Error during Data Source initialized', err);
 });
+
+
+

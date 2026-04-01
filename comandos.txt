@@ -28,3 +28,20 @@ npm i express-async-errors
 npm i cors
 npm i -D @types/express
 npm i @types/cors
+
+Inicializar TypeORM:
+npm i typeorm@latest
+npm i reflect-metadata
+npm i pg
+
+Inicializar Docker:
+docker run --name postgres -e POSTGRES_PASSWORD=docker -p 5433:5432 -d postgres
+docker ps 
+docker ps -a
+docker start nomeContainer
+docker stop nomeContainer
+
+npm run migration:run
+npm run migration:generate ./src/shared/typeorm/migrations/CreateProducts
+
+
